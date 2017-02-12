@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MesTaches.Models;
+using MesTaches.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +10,13 @@ namespace MesTaches.Controllers
 {
     public class TachesController : Controller
     {
+        private readonly ApplicationDbContext _context;
+
+        public TachesController()
+        {
+            _context = new ApplicationDbContext();
+        }
+        
         // GET: Taches
         [Authorize]
         public ActionResult Index()
@@ -26,7 +35,11 @@ namespace MesTaches.Controllers
         [Authorize]
         public ActionResult Create()
         {
-            return View();
+            var viewModel = new TacheFormViewModel
+            {
+                Projets = _context.Projets.ToList()
+            };
+            return View(viewModel);
         }
 
         // POST: Taches/Create

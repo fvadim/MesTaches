@@ -12,7 +12,6 @@ namespace MesTaches.ViewModels
         [Required]
         [ValidateDates]
         public string CreateDate { get; set; }
-
         public string CreateTime { get; set; }
 
         public string EndDate { get; set; }
