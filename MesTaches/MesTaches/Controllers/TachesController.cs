@@ -1,5 +1,6 @@
 ﻿using MesTaches.Models;
 using MesTaches.ViewModels;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,18 +46,27 @@ namespace MesTaches.Controllers
         // POST: Taches/Create
         [Authorize]
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(TacheFormViewModel _vm)
         {
-            try
+            if (!ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                _vm.Projets = _context.Projets.ToList();
+                return View("Create", _vm);
+            }
+            var tache = new Tache
+            {
+                Name = _vm.Name,
+                UserId = User.Identity.GetUserId(),
+                CreateDT = _vm.getCreateDT(),
+                EndDT = _vm.getEndDT(),
+                ProjetId = _vm.Projet
+            };
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            _context.Taches.Add(tache);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Home");
         }
 
         // GET: Taches/Edit/5
