@@ -20,6 +20,11 @@ namespace MesTaches.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+
+        public DbSet<Tache> Taches { get; set; }
+        public DbSet<Projet> Projets { get; set; }
+        public DbSet<Association> Associations { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

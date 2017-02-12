@@ -177,10 +177,18 @@
     <Compile Include="Migrations\201702121436219_InitialModel.Designer.cs">
       <DependentUpon>201702121436219_InitialModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702121520503_Tache_Projet_Association.cs" />
+    <Compile Include="Migrations\201702121520503_Tache_Projet_Association.Designer.cs">
+      <DependentUpon>201702121520503_Tache_Projet_Association.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Association.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Projet.cs" />
+    <Compile Include="Models\Statut.cs" />
+    <Compile Include="Models\Tache.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -254,6 +262,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201702121436219_InitialModel.resx">
       <DependentUpon>201702121436219_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702121520503_Tache_Projet_Association.resx">
+      <DependentUpon>201702121520503_Tache_Projet_Association.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
