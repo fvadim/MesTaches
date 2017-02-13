@@ -15,6 +15,7 @@ namespace MesTaches.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Projets
+        [Authorize]
         public ActionResult Index()
         {
             return View(db.Projets.ToList());

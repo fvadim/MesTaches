@@ -41,8 +41,20 @@ textarea {
 
     .navbar-inverse .navbar-brand {
         color: #ffffff;
-        background-color: transparent;
+        font-weight: 700;
     }
+
+    .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    color: #ffffff;
+    background-color: rgba(38, 126, 201, 0.34);
+}
+
+    .navbar-inverse .navbar-nav > .dropdown > a .caret {
+    border-top-color: #fff;
+    border-bottom-color: #fff;
+}
+
+
 
 /*Validation */
 

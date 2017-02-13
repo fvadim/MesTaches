@@ -18,6 +18,7 @@ namespace MesTaches.Controllers
             _context = new ApplicationDbContext();
         }
 
+        [Authorize]
         public ActionResult Index()
         {
             var allTaches = _context.Taches.Include(t => t.Projet).Include(t => t.User);
