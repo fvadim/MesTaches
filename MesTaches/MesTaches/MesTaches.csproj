@@ -170,6 +170,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProjetsController.cs" />
     <Compile Include="Controllers\TachesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -255,6 +256,11 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Taches\Create.cshtml" />
+    <Content Include="Views\Projets\Create.cshtml" />
+    <Content Include="Views\Projets\Delete.cshtml" />
+    <Content Include="Views\Projets\Details.cshtml" />
+    <Content Include="Views\Projets\Edit.cshtml" />
+    <Content Include="Views\Projets\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
