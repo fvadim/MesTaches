@@ -261,6 +261,7 @@
     <Content Include="Views\Projets\Details.cshtml" />
     <Content Include="Views\Projets\Edit.cshtml" />
     <Content Include="Views\Projets\Index.cshtml" />
+    <Content Include="Views\Taches\MesTaches.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

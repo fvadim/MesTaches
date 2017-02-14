@@ -34,7 +34,13 @@ namespace MesTaches.Controllers
             {
                 return HttpNotFound();
             }
-            return View(projet);
+
+            var tachesDeProjet = db.Taches
+                .Include(t => t.Projet)
+                .Include(t => t.User)
+                .Where(t => t.ProjetId == projet.Id);
+
+            return View(tachesDeProjet);
         }
 
         // GET: Projets/Create

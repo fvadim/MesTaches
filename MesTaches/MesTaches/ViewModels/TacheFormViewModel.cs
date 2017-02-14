@@ -22,6 +22,7 @@ namespace MesTaches.ViewModels
         {
             return DateTime.Parse(string.Format("{0} {1}", CreateDate, CreateTime)); 
         }
+
         public DateTime? getEndDT()
         {
             DateTime? res = null;

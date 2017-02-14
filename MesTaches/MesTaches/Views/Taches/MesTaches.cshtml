@@ -1,12 +1,10 @@
 ﻿@model IEnumerable<MesTaches.Models.Tache>
-
 @{
-    ViewBag.Title = "Les taches de projet";
+    ViewBag.Title = "MesTaches";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Model.First().Projet.Name</h2>
-
+<h2>MesTaches</h2>
 <div>
     @*<h4>Projet</h4>*@
     <hr />
@@ -18,13 +16,10 @@
             </dt>
 
             <dd>
-                @t.User.UserName
+                @t.Projet.Name
             </dd>
 
         </dl>
     }
 </div>
-<p>
-    @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-        @Html.ActionLink("Back to List", "Index")*@
-</p>
+

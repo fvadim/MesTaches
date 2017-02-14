@@ -21,7 +21,9 @@ namespace MesTaches.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            var allTaches = _context.Taches.Include(t => t.Projet).Include(t => t.User);
+            var allTaches = _context.Taches
+                .Include(t => t.Projet)
+                .Include(t => t.User);
             return View(allTaches);
         }
 
