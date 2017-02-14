@@ -14,8 +14,8 @@ namespace MesTaches.ViewModels
         public string CreateDate { get; set; }
         public string CreateTime { get; set; }
 
-        public string EndDate { get; set; }
-        public string EndTime { get; set; }
+        public string FinalDate { get; set; }
+        public string FinalTime { get; set; }
 
         
         public DateTime getCreateDT()
@@ -28,7 +28,7 @@ namespace MesTaches.ViewModels
             DateTime? res = null;
             try
             {
-                res = DateTime.Parse(string.Format("{0} {1}", EndDate, EndTime));
+                res = DateTime.Parse(string.Format("{0} {1}", FinalDate, FinalTime));
             }
             catch { }
             finally { }

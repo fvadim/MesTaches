@@ -5,21 +5,24 @@
 }
 
 <h2>MesTaches</h2>
-<div>
-    @*<h4>Projet</h4>*@
-    <hr />
-    @foreach (var t in Model)
-    {
-        <dl class="dl-horizontal">
-            <dt>
-                @t.Name
-            </dt>
-
-            <dd>
-                @t.Projet.Name
-            </dd>
-
-        </dl>
-    }
-</div>
-
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Tache</th>
+            <th>Debut</th>
+            <th>Fin</th>
+            <th>Projet</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var task in Model)
+        {
+            <tr>
+                <td>@task.Name</td>
+                <td>@task.CreateDT</td>
+                <td>@task.EndDT</td>
+                <td>@task.Projet.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>

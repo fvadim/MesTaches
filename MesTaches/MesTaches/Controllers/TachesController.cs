@@ -3,6 +3,7 @@ using MesTaches.ViewModels;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -24,6 +25,17 @@ namespace MesTaches.Controllers
         {
             return View();
         }
+
+        [Authorize]
+        public ActionResult MesTaches()
+        {
+            var userId = User.Identity.GetUserId();
+            var taches = _context.Taches.Where(t => t.UserId == userId)
+                .Include(t => t.Projet)                
+                .ToList();
+            return View(taches);
+        }
+
 
         // GET: Taches/Details/5
         [Authorize]
