@@ -1,33 +1,38 @@
 ﻿@model MesTaches.ViewModels.TachesProjetsViewModel
 @{
-     ViewBag.Title = "Home Page";
+    ViewBag.Title = "Home Page";
 }
 @foreach (var proj in Model.Projets)
 {
-<table class="table table-striped">
-    <thead>
-        <tr>            
-            <th>Tache</th>
-            <th>Debut</th>
-            <th>Fin</th>
-            <th>Projet</th>
-            <th>Nom d'utiisateur</th>
-            <th>Email</th>
-        </tr>
-    </thead>
-    <tbody>
-    @foreach (var task in Model.Taches.Where(t => t.ProjetId == proj.Id))
-    {
-        <tr>
-            <td>@task.Name</td>
-            <td>@task.CreateDT</td>
-            <td>@task.EndDT</td>
-            <td>@task.Projet.Name</td>
-            <td>@task.User.Name</td>
-            <td>@task.User.Email</td>
-        </tr>
-    }
-    </tbody>
-</table>
-}
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">@proj.Name</h3>
+        </div>
 
+        <div class="panel-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Tache</th>
+                        <th>Debut</th>
+                        <th>Fin</th>
+                        <th>Nom d'utiisateur</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var task in Model.Taches.Where(t => t.ProjetId == proj.Id))
+                {
+                        <tr>
+                            <td>@task.Name</td>
+                            <td>@task.CreateDT</td>
+                            <td>@task.EndDT</td>
+                            <td>@task.User.Name</td>
+                            <td>@task.User.Email</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}

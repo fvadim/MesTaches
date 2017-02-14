@@ -62,3 +62,7 @@ textarea {
     color:red;
     font-weight:bold;
 }
+
+.panel {
+    margin-top: 20px;
+}
