@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Data.Entity; 
+using System.Data.Entity;
+using MesTaches.ViewModels;
 
 namespace MesTaches.Controllers
 {
@@ -21,10 +22,16 @@ namespace MesTaches.Controllers
         [Authorize]
         public ActionResult Index()
         {
+            
             var allTaches = _context.Taches
                 .Include(t => t.Projet)
                 .Include(t => t.User);
-            return View(allTaches);
+
+            TachesProjetsViewModel _vm = new TachesProjetsViewModel();
+            _vm.Projets = _context.Projets.ToList();
+            _vm.Taches = allTaches;
+            
+            return View(_vm);
         }
 
         public ActionResult About()

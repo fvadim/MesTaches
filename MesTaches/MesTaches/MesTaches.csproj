@@ -206,6 +206,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\TacheFormViewModel.cs" />
+    <Compile Include="ViewModels\TachesProjetsViewModel.cs" />
     <Compile Include="ViewModels\ValidateDates.cs" />
   </ItemGroup>
   <ItemGroup>

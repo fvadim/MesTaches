@@ -1,8 +1,9 @@
-﻿@model IEnumerable<MesTaches.Models.Tache>
+﻿@model MesTaches.ViewModels.TachesProjetsViewModel
 @{
-    ViewBag.Title = "Home Page";
+     ViewBag.Title = "Home Page";
 }
-
+@foreach (var proj in Model.Projets)
+{
 <table class="table table-striped">
     <thead>
         <tr>            
@@ -15,7 +16,7 @@
         </tr>
     </thead>
     <tbody>
-    @foreach (var task in Model)
+    @foreach (var task in Model.Taches.Where(t => t.ProjetId == proj.Id))
     {
         <tr>
             <td>@task.Name</td>
@@ -28,4 +29,5 @@
     }
     </tbody>
 </table>
+}
 
