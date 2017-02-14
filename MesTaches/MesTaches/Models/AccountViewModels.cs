@@ -79,6 +79,11 @@ namespace MesTaches.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        [Display(Name ="Nom")]
+        public string Name { get; set; }
     }
 
     public class ResetPasswordViewModel

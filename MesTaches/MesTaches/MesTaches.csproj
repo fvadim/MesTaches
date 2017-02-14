@@ -187,6 +187,10 @@
     <Compile Include="Migrations\201702122057547_PopulateDefaultProject.Designer.cs">
       <DependentUpon>201702122057547_PopulateDefaultProject.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702140340418_AddNameToApplicationUser.cs" />
+    <Compile Include="Migrations\201702140340418_AddNameToApplicationUser.Designer.cs">
+      <DependentUpon>201702140340418_AddNameToApplicationUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Association.cs" />
@@ -283,6 +287,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702122057547_PopulateDefaultProject.resx">
       <DependentUpon>201702122057547_PopulateDefaultProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702140340418_AddNameToApplicationUser.resx">
+      <DependentUpon>201702140340418_AddNameToApplicationUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
