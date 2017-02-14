@@ -6,6 +6,11 @@ namespace MesTaches.ViewModels
 {
     public class TacheFormViewModel
     {
+
+        public TacheFormViewModel()
+        {
+            CreateDate = DateTime.Today.ToString("dd MMM yyyy");
+        }
         [Required]
         public string Name { get; set; }
 

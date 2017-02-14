@@ -66,3 +66,12 @@ textarea {
 .panel {
     margin-top: 20px;
 }
+ 
+li .action {
+    font-size:15px;
+    display:none;
+}
+
+li .action:hover {
+    display: block;
+}
