@@ -15,6 +15,8 @@ namespace MesTaches.Models
 
         public DateTime? EndDT { get; set; }
 
+        public DateTime? FinalDT { get; set; }
+
         [Required]
         public int ProjetId { get; set; }
 

@@ -3,23 +3,29 @@
     ViewBag.Title = "Home Page";
 }
 
-<ul class="tasks">
+<table class="table table-striped">
+    <thead>
+        <tr>            
+            <th>Tache</th>
+            <th>Debut</th>
+            <th>Fin</th>
+            <th>Projet</th>
+            <th>Nom d'utiisateur</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
     @foreach (var task in Model)
-    {    
-        <li>
-            <div class="date">
-                <div>@task.CreateDT.ToString()</div>
-                <div class="month">@task.CreateDT.ToString("MMM")</div>
-                <div class="day">@task.CreateDT.ToString("dd")</div>
-            </div>
-            <div class="details">
-                <span class="name">@task.Name</span>
-                <span class="projet">@task.Projet.Name</span>
-            </div>
-            <div class="details">
-                <span class="name">@task.User.UserName</span>
-                
-            </div>
-        </li>
+    {
+        <tr>
+            <td>@task.Name</td>
+            <td>@task.CreateDT</td>
+            <td>@task.EndDT</td>
+            <td>@task.Projet.Name</td>
+            <td>@task.User.Name</td>
+            <td>@task.User.Email</td>
+        </tr>
     }
-</ul>
+    </tbody>
+</table>
+
