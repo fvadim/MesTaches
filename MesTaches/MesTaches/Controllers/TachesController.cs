@@ -33,7 +33,14 @@ namespace MesTaches.Controllers
             var taches = _context.Taches.Where(t => t.UserId == userId)
                 .Include(t => t.Projet)                
                 .ToList();
-            return View(taches);
+            TachesProjetsViewModel _vm = new TachesProjetsViewModel();
+            var projets = from t in taches
+                          select t.Projet;
+            _vm.Projets = projets.ToList();
+            _vm.Taches = taches;
+
+           
+            return View(_vm);
         }
 
 

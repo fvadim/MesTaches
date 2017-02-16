@@ -75,3 +75,20 @@ li .action {
 li .action:hover {
     display: block;
 }
+
+
+/*Page level styles*/
+.tasks {
+    list-style:none;
+}
+.tasks > li {
+    position:relative;
+    margin-bottom:30px;
+}
+
+.tasks > li .details {
+    position:absolute;
+    top:0;
+    left:70px;
+}
+

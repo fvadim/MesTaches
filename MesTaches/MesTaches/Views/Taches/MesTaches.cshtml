@@ -1,31 +1,45 @@
-﻿@model IEnumerable<MesTaches.Models.Tache>
+﻿@model MesTaches.ViewModels.TachesProjetsViewModel
 @{
     ViewBag.Title = "MesTaches";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>MesTaches</h2>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Tache</th>
-            <th>Debut</th>
-            <th>Fin</th>
-            <th>Projet</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var task in Model)
-        {
-            <tr>
-                <td>@task.Name</td>
-                <td>@task.CreateDT</td>
-                <td>@task.EndDT</td>
-                <td>@task.Projet.Name</td>
-            </tr>
-            <div class="action">
-                <a href="#">Edit</a>
-            </div>
+@foreach (var proj in Model.Projets)
+{
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">@proj.Name</h3>
+        </div>
+
+        <div class="panel-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr class="row">
+                        <th class="col-lg-1"></th>
+                        <th class="col-md-4">Tache</th>
+                        <th class="col-md-2">
+                            <div>Debut</div>
+                        </th>
+                        <th class="col-md-2">
+                            <div>End</div>
+                        </th>
+                        <th class="col-md-2">Fin</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var task in Model.Taches.Where(t => t.ProjetId == proj.Id))
+                    {
+                        <tr class="row">
+                            <td class="col-lg-1"><span class="glyphicon glyphicon-ok" aria-hidden="true" hidden="@task.EndDT.HasValue"></span></td>
+                            <td class="col-md-4">@task.Name</td>
+                            <td class="col-md-2">@task.CreateDT.ToString("dd MMM yyyy")</td>
+                            <td class="col-md-2">@(task.EndDT.HasValue ? task.EndDT.Value.ToString("dd MMM yyyy") : "")</td>
+                            <td class="col-md-2">@(task.FinalDT.HasValue ? task.FinalDT.Value.ToString("dd MMM yyyy") : "")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        </div>
         }
-    </tbody>
-</table>

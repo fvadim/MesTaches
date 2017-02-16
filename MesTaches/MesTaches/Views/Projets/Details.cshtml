@@ -9,22 +9,35 @@
 
 <div>
     @*<h4>Projet</h4>*@
-    <hr />
-    @foreach (var t in Model)
-    {
-        <dl class="dl-horizontal">
-            <dt>
-                @t.Name
-            </dt>
 
-            <dd>
-                @t.User.UserName
-            </dd>
-
-        </dl>
-    }
+    <table class="table table-striped">
+        <thead>
+                <tr class="row">
+                    <th class="col-lg-1"></th>
+                    <th class="col-md-4">Tache</th>
+                    <th class="col-md-1">
+                        <div>Debut</div></th>
+                    <th class="col-md-1">
+                        <div>End</div>
+                    </th>
+                    <th class="col-md-2">Fin</th>
+                    <th class="col-md-1">Nom d'utilisateur</th>
+                    <th class="col-md-2">Email</th>
+                </tr>
+            </thead>
+        <tbody>
+                    @foreach (var task in Model)
+                    {
+                        <tr class="row">
+                            <td class="col-lg-1"><span class="glyphicon glyphicon-ok" aria-hidden="true" hidden="@task.EndDT.HasValue"></span></td>
+                            <td class="col-md-4">@task.Name</td>
+                            <td class="col-md-1">@task.CreateDT.ToString("dd MMM yyyy")</td>
+                            <td class="col-md-1">@(task.EndDT.HasValue ? task.EndDT.Value.ToString("dd MMM yyyy"): "")</td>
+                            <td class="col-md-1">@(task.FinalDT.HasValue ? task.FinalDT.Value.ToString("dd MMM yyyy") : "")</td>
+                            <td class="col-md-2">@task.User.Name</td>
+                            <td class="col-md-2">@task.User.Email</td>
+                        </tr>
+                                }
+                </tbody>
+        </table>
 </div>
-<p>
-    @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-        @Html.ActionLink("Back to List", "Index")*@
-</p>

@@ -4,35 +4,54 @@
 }
 @foreach (var proj in Model.Projets)
 {
-    <div class="panel panel-info">
-        <div class="panel-heading">
-            <h3 class="panel-title">@proj.Name</h3>
-        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">@proj.Name</h3>
+            </div>
 
-        <div class="panel-body">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Tache</th>
-                        <th>Debut</th>
-                        <th>Fin</th>
-                        <th>Nom d'utiisateur</th>
-                        <th>Email</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var task in Model.Taches.Where(t => t.ProjetId == proj.Id))
-                {
-                        <tr>
-                            <td>@task.Name</td>
-                            <td>@task.CreateDT</td>
-                            <td>@task.EndDT</td>
-                            <td>@task.User.Name</td>
-                            <td>@task.User.Email</td>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    @*<thead>
+                        <tr class="row">
+                            <th class="col-lg-1"></th>
+                            <th class="col-md-4">Tache</th>
+                            <th class="col-md-2">
+                                <div>Debut</div>
+                                <div>End</div>
+                            </th>
+                            <th class="col-md-2">Fin</th>
+                            <th class="col-md-2">Nom d'utilisateur</th>
+                            <th class="col-md-2">Email</th>
                         </tr>
-                    }
-                </tbody>
-            </table>
+                    </thead>*@
+                    @*<tbody>
+                        @foreach (var task in Model.Taches.Where(t => t.ProjetId == proj.Id))
+                {
+                            <tr class="row">
+                                <td class="col-lg-1"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+                                <td class="col-md-4">@task.Name</td>
+                                <td class="col-md-1">@task.CreateDT</td>
+                                <td class="col-md-1">@task.EndDT</td>
+                                <td class="col-md-2">@task.User.Name</td>
+                                <td class="col-md-2">@task.User.Email</td>
+                            </tr>
+                        }
+                    </tbody>*@
+                    <tbody>
+                @foreach (var task in Model.Taches.Where(t => t.ProjetId == proj.Id))
+        {
+                    <tr class="row">
+                        <td class="col-lg-1"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+                        <td class="col-md-6">@task.Name</td>
+                        <td class="col-lg-1">
+                            <button class="btn btn-primary">Fini</button>
+                        </td>
+                        <td class="col-md-2">@task.User.Name</td>
+                        <td class="col-md-2">@task.User.Email</td>
+                    </tr>
+                }
+            </tbody>
+                </table>
+            </div>
         </div>
-    </div>
 }
