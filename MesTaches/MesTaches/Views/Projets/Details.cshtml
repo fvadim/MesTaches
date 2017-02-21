@@ -1,11 +1,11 @@
-﻿@model IEnumerable<MesTaches.Models.Tache>
+﻿@model MesTaches.ViewModels.TachesProjetsViewModel
 
 @{
     ViewBag.Title = "Les taches de projet";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>@Model.First().Projet.Name</h2>
+@{ var proj = Model.Projets.First(); }
+<h2>@proj.Name</h2>
 
 <div>
     @*<h4>Projet</h4>*@
@@ -26,7 +26,8 @@
                 </tr>
             </thead>
         <tbody>
-                    @foreach (var task in Model)
+            @{ var tasks = from t in Model.Taches where t.ProjetId == proj.Id select t; }
+                    @foreach(var task in tasks)
                     {
                         <tr class="row">
                             <td class="col-lg-1"><span class="glyphicon glyphicon-ok" aria-hidden="true" hidden="@task.EndDT.HasValue"></span></td>

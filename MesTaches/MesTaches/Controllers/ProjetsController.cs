@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MesTaches.Models;
+using MesTaches.ViewModels;
 
 namespace MesTaches.Controllers
 {
@@ -18,7 +19,14 @@ namespace MesTaches.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            return View(db.Projets.ToList());
+            var allTaches = db.Taches
+                .Include(t => t.Projet)
+                .Include(t => t.User);
+
+            TachesProjetsViewModel _vm = new TachesProjetsViewModel();
+            _vm.Projets = db.Projets.ToList();
+            _vm.Taches = allTaches;
+            return View(_vm);
         }
 
         // GET: Projets/Details/5
@@ -29,18 +37,23 @@ namespace MesTaches.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            TachesProjetsViewModel _vm = new TachesProjetsViewModel();
             Projet projet = db.Projets.Find(id);
             if (projet == null)
             {
                 return HttpNotFound();
             }
+            
+            _vm.Projets = new List<Projet>();
+            _vm.Projets.Add(projet);
 
             var tachesDeProjet = db.Taches
-                .Include(t => t.Projet)
                 .Include(t => t.User)
                 .Where(t => t.ProjetId == projet.Id);
 
-            return View(tachesDeProjet);
+            _vm.Taches = tachesDeProjet;
+
+            return View(_vm);
         }
 
         // GET: Projets/Create
@@ -119,6 +132,14 @@ namespace MesTaches.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Projet projet = db.Projets.Find(id);
+             
+            
+
+            var taches = from t in db.Taches
+                         where t.ProjetId.Equals(projet.Id)
+                         select t;
+
+            db.Taches.RemoveRange(taches);
             db.Projets.Remove(projet);
             db.SaveChanges();
             return RedirectToAction("Index");
