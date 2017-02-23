@@ -183,6 +183,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProjetsController.cs" />
+    <Compile Include="Controllers\TacheAPI.cs" />
     <Compile Include="Controllers\TachesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -230,6 +231,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -283,6 +285,8 @@
     <Content Include="Views\Projets\Edit.cshtml" />
     <Content Include="Views\Projets\Index.cshtml" />
     <Content Include="Views\Taches\MesTaches.cshtml" />
+    <Content Include="Views\Taches\Details.cshtml" />
+    <Content Include="Views\Taches\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

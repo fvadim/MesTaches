@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Data.Entity;
 using MesTaches.ViewModels;
 
+
 namespace MesTaches.Controllers
 {
     public class HomeController : Controller
@@ -46,6 +47,18 @@ namespace MesTaches.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult SetDone(int id)
+        {
+            var tache = from t in _context.Taches
+                        where t.Id == id
+                        select t;
+            tache.First().EndDT = DateTime.Today;
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

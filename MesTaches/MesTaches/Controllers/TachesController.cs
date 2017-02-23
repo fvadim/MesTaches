@@ -48,7 +48,10 @@ namespace MesTaches.Controllers
         [Authorize]
         public ActionResult Details(int id)
         {
-            return View();
+            var _model = from t in _context.Taches
+                         where t.Id == id
+                         select t;
+            return View(_model.First());
         }
 
         // GET: Taches/Create
@@ -78,7 +81,7 @@ namespace MesTaches.Controllers
                 Name = _vm.Name,
                 UserId = User.Identity.GetUserId(),
                 CreateDT = _vm.getCreateDT(),
-                EndDT = _vm.getEndDT(),
+                FinalDT = _vm.getFinalDT(),
                 ProjetId = _vm.Projet
             };
 
@@ -92,23 +95,44 @@ namespace MesTaches.Controllers
         [Authorize]
         public ActionResult Edit(int id)
         {
-            return View();
+            var taches = from t in _context.Taches
+                         where t.Id == id
+                         select t;
+            Tache tache = taches.First();
+                    
+            var viewModel = new TacheFormViewModel
+            {
+                Projets = _context.Projets.ToList(),
+                CreateDate = tache.CreateDT.ToString("dd MMM yyyy"),
+                FinalDate = (null == tache.FinalDT) ? "" : ((DateTime)tache.FinalDT).ToString("dd MMM yyyy"),
+                Name = tache.Name,
+                Id = id
+            };
+            return View(viewModel);
+            
         }
 
         // POST: Taches/Edit/5
         [Authorize]
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(TacheFormViewModel _vm)
         {
             try
             {
-                // TODO: Add update logic here
 
-                return RedirectToAction("Index");
+                var taches = from t in _context.Taches
+                             where t.Id == _vm.Id
+                             select t;
+
+                Tache tache = taches.First();
+                tache.EndDT = _vm.getEndDT();
+                _context.SaveChanges();
+
+                return RedirectToAction("Index", "Home");
             }
             catch
             {
-                return View();
+                return RedirectToAction("Index", "Home"); 
             }
         }
 

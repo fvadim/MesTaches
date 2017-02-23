@@ -1,0 +1,41 @@
+﻿@model MesTaches.ViewModels.TacheFormViewModel
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@using (Html.BeginForm("Create", "Taches"))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name, "Nom de la Tache")
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Name)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.CreateDate)
+        @Html.TextBoxFor(m => m.CreateDate, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.CreateDate)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.EndDate)
+        @Html.TextBoxFor(m => m.EndDate, new { @class = "form-control", @type = "date" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.FinalDate)
+        @Html.TextBoxFor(m => m.FinalDate, new { @class = "form-control", @type = "date" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Projet)
+        @Html.DropDownListFor(m => m.Projet, new SelectList(Model.Projets, "Id", "Name"), "", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Projet)
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

@@ -7,6 +7,8 @@ namespace MesTaches.ViewModels
     public class TacheFormViewModel
     {
 
+        public int Id { get; set; }
+
         public TacheFormViewModel()
         {
             CreateDate = DateTime.Today.ToString("dd MMM yyyy");
@@ -19,6 +21,9 @@ namespace MesTaches.ViewModels
         public string CreateDate { get; set; }
         public string CreateTime { get; set; }
 
+        public string EndDate { get; set; }
+        public string EndTime { get; set; }
+
         public string FinalDate { get; set; }
         public string FinalTime { get; set; }
 
@@ -29,6 +34,18 @@ namespace MesTaches.ViewModels
         }
 
         public DateTime? getEndDT()
+        {
+            DateTime? res = null;
+            try
+            {
+                res = DateTime.Parse(string.Format("{0} {1}", EndDate, EndTime));
+            }
+            catch { }
+            finally { }
+            return res;
+        }
+
+        public DateTime? getFinalDT()
         {
             DateTime? res = null;
             try

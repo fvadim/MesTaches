@@ -16,10 +16,16 @@
         @foreach (var task in Model.Taches.Where(t => t.ProjetId == proj.Id))
         {
                     <tr class="row">
-                        <td class="col-lg-1"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
-                        <td class="col-md-6">@task.Name</td>
                         <td class="col-lg-1">
-                            <button class="btn btn-primary">Fini</button>
+                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                        </td>
+                        <td class="col-md-6">
+                            <a href="Taches/Edit/@task.Id">
+                                @task.Name
+                            </a>
+                        </td>
+                        <td class="col-lg-1">
+                            @*<button class="btn btn-primary js-toggle-ok" data-tache-id="@task.Id" >Fini</button>*@
                         </td>
                         <td class="col-md-2">@task.User.Name</td>
                         <td class="col-md-2">@task.User.Email</td>
@@ -30,3 +36,26 @@
             </div>
         </div>
 }
+
+@section scripts 
+    {
+        <script>
+            
+            $(document).ready(function () {
+                $(".js-toggle-ok").click(function (e) {
+                    var button = $(e.target);                    
+                    $.post("/Home/SetDone", { "": button.attr("data-tache-id") })
+                        .done(function () {
+                        button
+                        .removeClass("btn-primary")
+                        .addClass("btn-success");
+                        })
+                        .fail(function(){
+                            alert("Something failed!");
+                     });
+            });
+            });
+            
+        </script>
+    }
+
