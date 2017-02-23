@@ -39,25 +39,4 @@
         </div>
 }
 
-@section scripts 
-    {
-        <script>
-            
-            $(document).ready(function () {
-                $(".js-toggle-ok").click(function (e) {
-                    var button = $(e.target);                    
-                    $.post("/Home/SetDone", { "": button.attr("data-tache-id") })
-                        .done(function () {
-                        button
-                        .removeClass("btn-primary")
-                        .addClass("btn-success");
-                        })
-                        .fail(function(){
-                            alert("Something failed!");
-                     });
-            });
-            });
-            
-        </script>
-    }
 
