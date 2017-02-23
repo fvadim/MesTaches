@@ -17,7 +17,9 @@
         {
                     <tr class="row">
                         <td class="col-lg-1">
-                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                            @{ var glClass = task.EndDT.HasValue ? "glyphicon-ok" : "glyphicon-check"; }
+                            <span class="glyphicon @glClass" aria-hidden="true"></span>
+
                         </td>
                         <td class="col-md-6">
                             <a href="Taches/Edit/@task.Id">

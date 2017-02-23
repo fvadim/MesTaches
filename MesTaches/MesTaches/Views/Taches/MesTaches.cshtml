@@ -31,8 +31,13 @@
                     @foreach (var task in Model.Taches.Where(t => t.ProjetId == proj.Id))
                     {
                         <tr class="row">
-                            <td class="col-lg-1"><span class="glyphicon glyphicon-ok" aria-hidden="true" hidden="@task.EndDT.HasValue"></span></td>
-                            <td class="col-md-4">@task.Name</td>
+                            <td class="col-lg-1">
+                                @{ var glClass = task.EndDT.HasValue ? "glyphicon-ok" : "glyphicon-check"; }
+                                <span class="glyphicon @glClass" aria-hidden="true"></span>
+                            </td>
+                            <td class="col-md-4">
+                                <a href="Edit/@task.Id">@task.Name</a>
+                            </td>
                             <td class="col-md-2">@task.CreateDT.ToString("dd MMM yyyy")</td>
                             <td class="col-md-2">@(task.EndDT.HasValue ? task.EndDT.Value.ToString("dd MMM yyyy") : "")</td>
                             <td class="col-md-2">@(task.FinalDT.HasValue ? task.FinalDT.Value.ToString("dd MMM yyyy") : "")</td>

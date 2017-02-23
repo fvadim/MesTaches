@@ -36,7 +36,7 @@ namespace MesTaches.Controllers
             TachesProjetsViewModel _vm = new TachesProjetsViewModel();
             var projets = from t in taches
                           select t.Projet;
-            _vm.Projets = projets.ToList();
+            _vm.Projets = projets.Distinct().ToList();
             _vm.Taches = taches;
 
            
@@ -60,6 +60,7 @@ namespace MesTaches.Controllers
         {
             var viewModel = new TacheFormViewModel
             {
+                CreateDate = DateTime.Today.ToShortDateString(),
                 Projets = _context.Projets.ToList()
             };
             return View(viewModel);
@@ -99,13 +100,17 @@ namespace MesTaches.Controllers
                          where t.Id == id
                          select t;
             Tache tache = taches.First();
-                    
+            
             var viewModel = new TacheFormViewModel
             {
+                //CreateDT = tache.CreateDT,
+                //EndDT = tache.EndDT ,
                 Projets = _context.Projets.ToList(),
-                CreateDate = tache.CreateDT.ToString("dd MMM yyyy"),
-                FinalDate = (null == tache.FinalDT) ? "" : ((DateTime)tache.FinalDT).ToString("dd MMM yyyy"),
+                CreateDate = tache.CreateDT.ToShortDateString(),
+                EndDate = tache.EndDT.HasValue ? ((DateTime)tache.EndDT).ToShortDateString(): "",                
+                FinalDate = tache.FinalDT.HasValue ? ((DateTime)tache.FinalDT).ToShortDateString() : "",
                 Name = tache.Name,
+                Projet = tache.ProjetId,
                 Id = id
             };
             return View(viewModel);
@@ -125,7 +130,10 @@ namespace MesTaches.Controllers
                              select t;
 
                 Tache tache = taches.First();
+                tache.FinalDT = _vm.getFinalDT();
                 tache.EndDT = _vm.getEndDT();
+                tache.ProjetId = _vm.Projet;
+
                 _context.SaveChanges();
 
                 return RedirectToAction("Index", "Home");

@@ -51,13 +51,15 @@ namespace MesTaches.Controllers
 
         [Authorize]
         [HttpPost]
-        public ActionResult SetDone(int id)
+        public ActionResult SetDone(string _id)
         {
+            int id = Int32.Parse(_id);
             var tache = from t in _context.Taches
                         where t.Id == id
                         select t;
             tache.First().EndDT = DateTime.Today;
             _context.SaveChanges();
+            //return "<span class=\"glyphicon glyphicon-ok\" aria-hidden=\"true\"></span>";
             return RedirectToAction("Index");
         }
     }
