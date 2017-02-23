@@ -1,10 +1,10 @@
 ﻿@model MesTaches.ViewModels.TachesProjetsViewModel
 @{
-    ViewBag.Title = "MesTaches";
+    ViewBag.Title = "MesTâches";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>MesTaches</h2>
+<h2>MesTâches</h2>
 @foreach (var proj in Model.Projets)
 {
     <div class="panel panel-info">
@@ -17,14 +17,14 @@
                 <thead>
                     <tr class="row">
                         <th class="col-lg-1"></th>
-                        <th class="col-md-4">Tache</th>
+                        <th class="col-md-4">Tâche</th>
                         <th class="col-md-2">
                             <div>Debut</div>
                         </th>
                         <th class="col-md-2">
-                            <div>End</div>
+                            <div>Fait</div>
                         </th>
-                        <th class="col-md-2">Fin</th>
+                        <th class="col-md-2">Date d'échéance</th>
                     </tr>
                 </thead>
                 <tbody>

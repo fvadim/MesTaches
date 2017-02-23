@@ -23,8 +23,8 @@
                     @*@Html.DisplayFor(modelItem => item.Name)*@
                 </td>
                 <td>
-                    @Html.ActionLink("Rename", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    @Html.ActionLink("Changer le nom", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Supprimer", "Delete", new { id = item.Id })
                 </td>
             </tr>
             }
@@ -32,5 +32,5 @@
 </table>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Créer", "Create")
 </p>

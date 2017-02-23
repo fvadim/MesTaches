@@ -1,13 +1,13 @@
 ﻿@model MesTaches.Models.IndexViewModel
 @{
-    ViewBag.Title = "Manage";
+    ViewBag.Title = "Gerer";
 }
 
 <h2>@ViewBag.Title.</h2>
 
 <p class="text-success">@ViewBag.StatusMessage</p>
 <div>
-    <h4>Change your account settings</h4>
+    <h4>Modifier les paramètres de votre compte</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>Nom:</dt>
@@ -18,16 +18,16 @@
         <dd>
              @User.Identity.Name
         </dd>
-        <dt>Password:</dt>
+        <dt>Mot de passe:</dt>
         <dd>
             
             @if (Model.HasPassword)
             {
-                @Html.ActionLink("Change your password", "ChangePassword")
+                @Html.ActionLink("Modifiez votre mot de passe", "ChangePassword")
             }
             else
             {
-                @Html.ActionLink("Create", "SetPassword")
+                @Html.ActionLink("Créer", "SetPassword")
             }
             
         </dd>

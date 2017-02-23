@@ -12,5 +12,6 @@ namespace MesTaches.ViewModels
 
         public IEnumerable<MesTaches.Models.Tache> Taches { get; set; }
 
+        public string SearchTerm { get; set; }
     }
 }

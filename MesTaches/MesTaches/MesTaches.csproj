@@ -216,6 +216,11 @@
     <Compile Include="Models\Statut.cs" />
     <Compile Include="Models\Tache.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="MyRessources\Res.fr-ca.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Res.fr-ca.resx</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\TacheFormViewModel.cs" />
     <Compile Include="ViewModels\TachesProjetsViewModel.cs" />
@@ -313,6 +318,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702140417475_AddFinalDateTimeToTachesModel.resx">
       <DependentUpon>201702140417475_AddFinalDateTimeToTachesModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyRessources\Res.fr-ca.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Res.fr-ca.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
