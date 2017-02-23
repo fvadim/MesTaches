@@ -183,7 +183,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProjetsController.cs" />
-    <Compile Include="Controllers\TacheAPI.cs" />
     <Compile Include="Controllers\TachesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

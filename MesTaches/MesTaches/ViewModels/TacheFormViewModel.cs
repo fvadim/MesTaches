@@ -61,5 +61,7 @@ namespace MesTaches.ViewModels
         [Required]
         public int Projet { get; set; }
         public IEnumerable<Models.Projet> Projets { get; set; }
+
+       
     }
 }

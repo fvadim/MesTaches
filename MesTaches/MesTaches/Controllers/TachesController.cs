@@ -100,11 +100,11 @@ namespace MesTaches.Controllers
                          where t.Id == id
                          select t;
             Tache tache = taches.First();
-            
+            string caller = (null == Request.QueryString["filter"]) ? "Index" : "MesTaches";
+            TempData["callerView"] = caller;
             var viewModel = new TacheFormViewModel
             {
-                //CreateDT = tache.CreateDT,
-                //EndDT = tache.EndDT ,
+                
                 Projets = _context.Projets.ToList(),
                 CreateDate = tache.CreateDT.ToShortDateString(),
                 EndDate = tache.EndDT.HasValue ? ((DateTime)tache.EndDT).ToShortDateString(): "",                
@@ -135,8 +135,10 @@ namespace MesTaches.Controllers
                 tache.ProjetId = _vm.Projet;
 
                 _context.SaveChanges();
-
-                return RedirectToAction("Index", "Home");
+                string caller = TempData["callerView"].ToString();
+                if (caller == "Index")
+                { return RedirectToAction("Index", "Home"); }
+                else { return RedirectToAction("MesTaches" ,"Taches" ); }
             }
             catch
             {

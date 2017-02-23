@@ -36,7 +36,7 @@
                                 <span class="glyphicon @glClass" aria-hidden="true"></span>
                             </td>
                             <td class="col-md-4">
-                                <a href="Edit/@task.Id">@task.Name</a>
+                                <a href="Edit/@task.Id?filter=moi">@task.Name</a>
                             </td>
                             <td class="col-md-2">@task.CreateDT.ToString("dd MMM yyyy")</td>
                             <td class="col-md-2">@(task.EndDT.HasValue ? task.EndDT.Value.ToString("dd MMM yyyy") : "")</td>
