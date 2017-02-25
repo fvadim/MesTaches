@@ -5,15 +5,6 @@ using Microsoft.Owin.Security;
 
 namespace MesTaches.Models
 {
-    public class IndexViewModel
-    {
-        public bool HasPassword { get; set; }
-
-
-        [Required]
-        [StringLength(100)]
-        public string Name { get; set; }
-    }
 
     public class FactorViewModel
     {

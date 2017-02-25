@@ -11,7 +11,5 @@ namespace MesTaches.ViewModels
         public List<MesTaches.Models.Projet> Projets { get; set; }
 
         public IEnumerable<MesTaches.Models.Tache> Taches { get; set; }
-
-        public string SearchTerm { get; set; }
     }
 }
